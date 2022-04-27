@@ -14,6 +14,7 @@ function App() {
   const [movies, setMovies] = useState(data);
   const [input, setInput] = useState("");
   const [details, setDetails] = useState([]);
+  const [inputField, setInputfield] = useState("");
 
   // const getInput = (getInput) => {
   //   setInput(getInput.target.value);
@@ -25,6 +26,7 @@ function App() {
 
     const filteredDetails = data.filter((movie) => movie.Title == detailTitle);
     setDetails(filteredDetails);
+    setMovies(data);
   };
 
   useEffect(() => {});
@@ -53,7 +55,11 @@ function App() {
   return (
     <Router>
       <div className="App container-fluid">
-        <MovieHeader input={input} getInput={(e) => setInput(e.target.value)} />
+        <MovieHeader
+          input={input}
+          getInput={(e) => setInput(e.target.value)}
+          resetInput={(e) => setInputfield(e.target.value)}
+        />
         <Routes>
           <Route
             path="/"
