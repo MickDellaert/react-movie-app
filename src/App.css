@@ -1,0 +1,12 @@
+.input:hover{
+  width: 260px;
+}
+
+.input{
+  width: 200px;
+  transition: width .4s ease-in-out; 
+}
+
+.ms-n5 {
+  margin-left: -40px;
+}
