@@ -10,10 +10,23 @@ import MovieInput from "./components/MovieInput";
 function App() {
   const [movies, setMovies] = useState(data);
   const [input, setInput] = useState("");
+  const [details, setDetails] = useState([]);
 
   const getInput = (getInput) => {
     setInput(getInput.target.value);
   };
+
+  const getTitle = (getTitle) => {
+    console.log(getTitle.currentTarget.title);
+
+    let title = getTitle.currentTarget.title;
+
+    const filterObj = data.filter((e) => e.Title == title);
+    setDetails(filterObj);
+    console.log(details);
+  };
+
+  useEffect(() => {});
 
   useEffect(() => {
     if (input.length > 1) {
@@ -43,8 +56,15 @@ function App() {
         <MovieInput getInput={getInput} />
       </div>
       <div className="row">
-        <MovieCard data={movies} />
+        <MovieCard data={movies} getTitle={getTitle} />
       </div>
+      {details.map((detail) => (
+        <>
+          <p>{detail.Title}</p>
+          <p>{detail.Actors}</p>
+          <p>{detail.Awards}</p>
+        </>
+      ))}
     </div>
   );
 }
