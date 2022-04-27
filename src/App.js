@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { data } from "./data";
 import MovieCard from "./components/MovieCard";
 import { MovieHeader } from "./components/header/MovieHeader";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   const [movies, setMovies] = useState(data);
@@ -35,7 +36,10 @@ function App() {
           movie.Actors.toLowerCase().includes(input.toLowerCase()) ||
           movie.Director.toLowerCase().includes(input.toLowerCase())
       );
+
       setMovies(filteredMovies);
+      setDetails([]);
+
       console.log("useEffect");
     } else {
       setMovies(data);
@@ -48,13 +52,7 @@ function App() {
     <div className="App container-fluid">
       <MovieHeader getInput={(e) => setInput(e.target.value)} />
       <MovieCard data={movies} handleClick={getDetails} />
-      {details.map((detail) => (
-        <>
-          <p>{detail.Title}</p>
-          <p>{detail.Actors}</p>
-          <p>{detail.Awards}</p>
-        </>
-      ))}
+      <MovieDetails details={details} />
     </div>
   );
 }

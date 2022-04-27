@@ -1,4 +1,4 @@
-const MovieTitle = ({input}) => {
+const MovieTitle = ({ input }) => {
   return (
     <>
       <div className="col">
