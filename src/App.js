@@ -5,31 +5,30 @@ import { useEffect } from "react";
 
 import { data } from "./data";
 import MovieCard from "./components/MovieCard";
-import MovieInput from "./components/MovieInput";
+import { MovieHeader } from "./components/header/MovieHeader";
 
 function App() {
   const [movies, setMovies] = useState(data);
   const [input, setInput] = useState("");
   const [details, setDetails] = useState([]);
 
-  const getInput = (getInput) => {
-    setInput(getInput.target.value);
-  };
+  // const getInput = (getInput) => {
+  //   setInput(getInput.target.value);
+  // };
 
-  const getTitle = (getTitle) => {
-    console.log(getTitle.currentTarget.title);
+  // get title from clicked element using function
+  const getDetails = (title) => {
+    let detailTitle = title;
 
-    let title = getTitle.currentTarget.title;
-
-    const filterObj = data.filter((e) => e.Title == title);
-    setDetails(filterObj);
-    console.log(details);
+    const filteredDetails = data.filter((movie) => movie.Title == detailTitle);
+    setDetails(filteredDetails);
   };
 
   useEffect(() => {});
 
+  // set movies from typed input using useEffect
   useEffect(() => {
-    if (input.length > 1) {
+    if (input.length > 0) {
       let filteredMovies = data.filter(
         (movie) =>
           movie.Title.toLowerCase().includes(input.toLowerCase()) ||
@@ -41,23 +40,14 @@ function App() {
     } else {
       setMovies(data);
       console.log("reset");
+      setDetails([]);
     }
   }, [input]);
 
   return (
     <div className="App container-fluid">
-      <div className="row d-flex my-4 justify-content-end align-items-center">
-        <div className="col">
-          <h1>React Movie App</h1>
-        </div>
-        <div className="col d-flex justify-content-center align-items-center">
-          <p>{input}</p>
-        </div>
-        <MovieInput getInput={getInput} />
-      </div>
-      <div className="row">
-        <MovieCard data={movies} getTitle={getTitle} />
-      </div>
+      <MovieHeader getInput={(e) => setInput(e.target.value)} />
+      <MovieCard data={movies} handleClick={getDetails} />
       {details.map((detail) => (
         <>
           <p>{detail.Title}</p>

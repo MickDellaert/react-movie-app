@@ -14,7 +14,7 @@ const MovieInput = ({ getInput }) => {
           type="search"
           placeholder="search"
           id="example-search-input"
-          onChange={(event) => getInput(event)}
+          onChange={getInput}
         />
         <span className="input-group-append">
           <button
