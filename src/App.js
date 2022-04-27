@@ -1,5 +1,7 @@
 import "./App.css";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -49,11 +51,18 @@ function App() {
   }, [input]);
 
   return (
-    <div className="App container-fluid">
-      <MovieHeader getInput={(e) => setInput(e.target.value)} />
-      <MovieCard data={movies} handleClick={getDetails} />
-      <MovieDetails details={details} />
-    </div>
+    <Router>
+      <div className="App container-fluid">
+        <MovieHeader input={input} getInput={(e) => setInput(e.target.value)} />
+        <Routes>
+          <Route
+            path="/"
+            element={<MovieCard data={movies} handleClick={getDetails} />}
+          />
+          <Route path="/details" element={<MovieDetails details={details} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
