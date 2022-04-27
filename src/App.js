@@ -14,7 +14,6 @@ function App() {
   const [movies, setMovies] = useState(data);
   const [input, setInput] = useState("");
   const [details, setDetails] = useState([]);
-  const [inputField, setInputfield] = useState("");
 
   // const getInput = (getInput) => {
   //   setInput(getInput.target.value);
@@ -55,11 +54,7 @@ function App() {
   return (
     <Router>
       <div className="App container-fluid">
-        <MovieHeader
-          input={input}
-          getInput={(e) => setInput(e.target.value)}
-          resetInput={(e) => setInputfield(e.target.value)}
-        />
+        <MovieHeader input={input} getInput={(e) => setInput(e.target.value)} />
         <Routes>
           <Route
             path="/"

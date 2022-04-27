@@ -1,13 +1,6 @@
 const MovieInput = ({ getInput }) => {
   return (
     <>
-      {/* <div className="col d-flex justify-content-end">
-        <input
-          className="input"
-          type="text"
-          onChange={(event) => getInput(event)}
-        />
-      </div> */}
       <div className="input-group input">
         <input
           className="form-control border-end-0 border"
