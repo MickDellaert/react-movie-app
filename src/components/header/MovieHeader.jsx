@@ -7,7 +7,7 @@ export const MovieHeader = ({ getInput, input }) => {
     <>
       <header className="row d-flex my-4 justify-content-end align-items-center">
         <MovieTitle input={input} />
-        <MovieInput getInput={getInput} />
+        <MovieInput getInput={getInput} input={input}/>
       </header>
     </>
   );

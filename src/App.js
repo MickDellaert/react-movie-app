@@ -21,10 +21,13 @@ function App() {
 
   // get title from clicked element using function
   const getDetails = (title) => {
-    let detailTitle = title;
+    // let detailTitle = title;
+    console.log(title);
 
-    const filteredDetails = data.filter((movie) => movie.Title == detailTitle);
+    const filteredDetails = data.filter((movie) => movie.Title === title);
     setDetails(filteredDetails);
+
+    setInput("");
     setMovies(data);
   };
 
@@ -41,13 +44,13 @@ function App() {
       );
 
       setMovies(filteredMovies);
-      setDetails([]);
+      // setDetails([]);
 
       console.log("useEffect");
     } else {
       setMovies(data);
       console.log("reset");
-      setDetails([]);
+      // setDetails([]);
     }
   }, [input]);
 

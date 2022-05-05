@@ -1,4 +1,4 @@
-const MovieInput = ({ getInput }) => {
+const MovieInput = ({ getInput, input }) => {
   return (
     <>
       <div className="input-group input">
@@ -8,6 +8,7 @@ const MovieInput = ({ getInput }) => {
           placeholder="search"
           id="example-search-input"
           onChange={getInput}
+          value={input}
         />
         <span className="input-group-append">
           <button
